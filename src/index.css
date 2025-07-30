@@ -2,14 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* FBI Warning Design System - Terminal/Warning Aesthetic
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 0%;
+    --foreground: 0 100% 50%;
+    
+    /* FBI Warning specific colors */
+    --warning-primary: 0 100% 50%;
+    --warning-background: 0 0% 0%;
+    --warning-glow: 0 100% 30%;
+    --alert-flash: 0 100% 70%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -100,6 +106,40 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono;
+  }
+}
+
+@layer components {
+  /* FBI Warning animations */
+  .warning-pulse {
+    animation: warning-pulse 1s ease-in-out infinite alternate;
+  }
+  
+  .alert-blink {
+    animation: alert-blink 0.5s linear infinite;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px hsl(var(--warning-glow)), 
+                 0 0 20px hsl(var(--warning-glow)),
+                 0 0 30px hsl(var(--warning-glow));
+  }
+}
+
+@layer utilities {
+  @keyframes warning-pulse {
+    from { 
+      text-shadow: 0 0 5px hsl(var(--warning-primary));
+    }
+    to { 
+      text-shadow: 0 0 20px hsl(var(--warning-primary)), 
+                   0 0 30px hsl(var(--warning-primary));
+    }
+  }
+  
+  @keyframes alert-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
   }
 }

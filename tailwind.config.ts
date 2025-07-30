@@ -18,12 +18,21 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				mono: ['Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', 'monospace'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				warning: {
+					primary: 'hsl(var(--warning-primary))',
+					background: 'hsl(var(--warning-background))',
+					glow: 'hsl(var(--warning-glow))',
+					flash: 'hsl(var(--alert-flash))',
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
